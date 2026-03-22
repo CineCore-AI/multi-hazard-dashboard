@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Multi-hazard climate risk dashboard for India">
+    <title>Multi-Hazard Risk Intelligence System</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <noscript>
+        <p style="text-align: center; padding: 10px; background: #3b0000; color: white;">
+            ⚠️ This system requires JavaScript to function properly.
+        </p>
+    </noscript>
+
+    <header>
+        <h1>🌏 Multi-Hazard Risk Intelligence System</h1>
+        <p class="subtitle">Real-time Climate Risk Intelligence</p>
+    </header>
+
+    <main class="container" id="app">
+        
+        <form id="searchForm" class="search-box" onsubmit="event.preventDefault();">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Enter city or pincode" 
+                aria-label="Search by city or pincode"
+                autocomplete="off"
+                required
+            >
+            <button id="searchBtn" type="button">Search</button>
+            
+            <p id="hint">
+                Try:
+                <span class="example">Chennai</span> •
+                <span class="example">Delhi</span> •
+                <span class="example">603203</span>
+            </p>
+        </form>
+
+        <section id="status" aria-live="polite" role="status">
+            <span id="loader" class="hidden">⏳ Loading...</span>
+        </section>
+
+        <section id="results" class="hidden" aria-live="polite">
+            <h2 id="locationName"></h2>
+            
+            <p id="summary"></p>
+
+            <div class="grid">
+                <article class="card" id="heatwave" data-type="heatwave"></article>
+                <article class="card" id="flood" data-type="flood"></article>
+                <article class="card" id="drought" data-type="drought"></article>
+                <article class="card" id="rainfall" data-type="rainfall"></article>
+                <article class="card" id="landslide" data-type="landslide"></article>
+            </div>
+        </section>
+
+        <section id="mapSection" class="hidden">
+            <h2>📍 Location Map</h2>
+            <div id="map" role="region" aria-label="Map showing selected location"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Powered by Climate Data • Prototype System</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
